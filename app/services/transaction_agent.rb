@@ -6,7 +6,6 @@ class TransactionAgent
 
 	def send_money
 		@money = @transaction.money
-
 		remove_money
 		give_money
 		get_comission
