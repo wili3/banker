@@ -1,0 +1,4 @@
+ruby version 2.2.1
+rails version 4.2.5
+
+
