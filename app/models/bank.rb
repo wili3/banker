@@ -1,4 +1,4 @@
 class Bank < ActiveRecord::Base
 	has_many :accounts
-	validates :name, :comissions_amount_earned
+	validates :name, :comissions_amount_earned, presence: true
 end
