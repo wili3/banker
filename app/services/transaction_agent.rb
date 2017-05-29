@@ -5,10 +5,12 @@ class TransactionAgent
 	end
 
 	def send_money
-		@money = @transaction.money
-		remove_money
-		give_money
-		get_comission
+		if @transaction.status == "Succeed"
+			@money = @transaction.money
+			remove_money
+			give_money
+			get_comission
+		end
 	end
 
 	private
@@ -26,6 +28,7 @@ class TransactionAgent
 	def get_comission
 		if !@same_bank
 			Account.where(id: @transaction.sender_id).first.update_attribute(:money, Account.where(id: @transaction.sender_id).first.money - 5)
+			Account.where(id: @transaction.sender_id).first.bank.update_attribute(:comissions_amount_earned, Account.where(id: @transaction.sender_id).first.bank.comissions_amount_earned + 5)
 		end
 	end
 end
