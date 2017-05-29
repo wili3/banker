@@ -4,6 +4,7 @@ class TransactionAgent
 		@same_bank = same_bank
 	end
 
+	# send money is triggered at the end of the TransactionCreator in order to deliver the money	
 	def send_money
 		if @transaction.status == "Succeed"
 			@money = @transaction.money
@@ -14,17 +15,17 @@ class TransactionAgent
 	end
 
 	private
-
+	#removes money from sender account
 	def remove_money
 		account = Account.where(id: @transaction.sender_id).first
 		account.update_attribute(:money, account.money - @money)
 	end
-
+	#gives money to receiver account
 	def give_money
 		account = Account.where(id: @transaction.receiver_id).first
 		account.update_attribute(:money, account.money + @money)
 	end
-
+	#gets comission and gives it to the account's bank
 	def get_comission
 		if !@same_bank
 			Account.where(id: @transaction.sender_id).first.update_attribute(:money, Account.where(id: @transaction.sender_id).first.money - 5)
