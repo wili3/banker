@@ -47,4 +47,18 @@ localhost:3000/transactions/create?sender_id=1&receiver_id=2&money=3000
 
 	rspec "test filepath"
 
+-Create new Account
+
+·open the db/seeds.rb and paste this chunk of code with the customized parameters you want:
+
+	Account.create(
+		holder_name: 'Cloud',
+		money: 50000,
+		bank_id: 2,
+	)
+
+·and run:
+
+	rake db:setup
+
 
