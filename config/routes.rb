@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  post 'transactions/create'
+  get 'transactions/create'
 end
