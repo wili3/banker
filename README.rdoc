@@ -1,4 +1,50 @@
 ruby version 2.2.1
+
 rails version 4.2.5
+
+-Usage instructions:
+
+·to use this api, you have to turn on the server, remote or localy and make a browser request to this endpoint:
+
+localhost:3000/transactions/create?sender_id=1&receiver_id=2&money=3000
+
+-Deployment instructions:
+
+·to run localy:
+
+	bundle install --without production
+
+	rake db:migrate
+
+	rake db:setup
+
+	rails server
+
+·to deploy this to heroku just follow this steps:
+
+	heroku create
+
+	git push heroku master
+
+	heroku run rake db:migrate
+
+	heroku run rake db:setup
+
+·after this type:
+
+	heroku open
+
+·and the application will be live and ready, 
+
+
+-Run tests:
+
+·to run all the tests just type :
+
+	rspec
+
+·to run one specific test
+
+	rspec "test filepath"
 
 
